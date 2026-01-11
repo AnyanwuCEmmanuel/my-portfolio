@@ -83,6 +83,16 @@ body {
 .contact-form button {
     width: 100%;
 }
+.contact-links a {
+    color: #a0522d;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover {
+    color: #c07a5a;
+    text-decoration: underline;
+}
 
 .hero::before {
     content: '';
@@ -759,4 +769,5 @@ section {
     .hero h1.glitch { font-size: 2.4rem !important; }
     .typewriter { font-size: 1.6rem !important; }
     .nav { padding: 12px 15px; }
+
 }
