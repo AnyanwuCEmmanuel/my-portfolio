@@ -27,71 +27,127 @@ body {
 }
 
 .contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
     max-width: 1000px;
     margin: 0 auto;
-    justify-content: center;
-    align-items: start;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;           /* better than align-items for different heights */
+}
+
+/* ── Desktop: side by side ── */
+@media (min-width: 768px) {
+    .contact-container {
+        padding: 0;
+    }
+}
+
+/* ── Mobile: stack vertically ── */
+@media (max-width: 767px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
 }
 
 .contact-links {
     text-align: left;
     font-size: 1.2rem;
+    line-height: 2.1;
 }
 
 .contact-links p {
-    margin: 20px 0;
+    margin: 24px 0;
     color: #4a2c2a;
 }
 
 .contact-links i {
     color: #a0522d;
-    margin-right: 10px;
-    font-size: 1.4rem;
+    margin-right: 12px;
+    font-size: 1.45rem;
+    width: 1.6em;          /* better icon alignment */
+    text-align: center;
+}
+
+.contact-links a {
+    color: #a0522d;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.contact-links a:hover,
+.contact-links a:focus {
+    color: #c07a5a;
+    text-decoration: underline;
 }
 
 .contact-form {
-    flex: 1;
-    min-width: 300px;
     background: white;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;              /* ← only gap, remove margin-bottom from inputs */
+    width: 100%;
+    min-width: 0;           /* prevents flex/grid overflow issues */
 }
 
+/* Form fields */
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
+   width: 100%;
+    padding: 14px 16px;               /* balanced padding */
+    line-height: 1.5;                 /* ← crucial! 1.4–1.6 range usually fixes chop */
+    min-height: 48px;                 /* minimum touch-friendly height */
+    box-sizing: border-box;
+    font-size: 1rem;                  /* or 16px */
+    background: #f5f0e6;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 1rem;
-    background: #f5f0e6;
     color: #3d2914;
+}
+/* 2. Special iOS/Safari placeholder fix */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    line-height: 1.5;
+    color: #8b7355;                   /* slightly darker for better visibility */
+    opacity: 0.75;                    /* common modern placeholder style */
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: #a0522d;
-    box-shadow: 0 0 10px rgba(160, 82, 45, 0.3);
+    box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.15);
 }
 
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Button full width + better hover */
 .contact-form button {
     width: 100%;
-}
-.contact-links a {
-    color: #a0522d;
-    text-decoration: none;
-    transition: color 0.3s;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: #a0522d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
 }
 
-.contact-links a:hover {
-    color: #c07a5a;
-    text-decoration: underline;
+.contact-form button:hover,
+.contact-form button:focus {
+    background: #c07a5a;
+    transform: translateY(-1px);
 }
 
 .hero::before {
@@ -479,7 +535,7 @@ body {
 
 /* Sections */
 section {
-    padding: 100px 20px;
+    padding: 80px 15px;
     text-align: center;
 }
 
@@ -769,5 +825,5 @@ section {
     .hero h1.glitch { font-size: 2.4rem !important; }
     .typewriter { font-size: 1.6rem !important; }
     .nav { padding: 12px 15px; }
-
 }
+
