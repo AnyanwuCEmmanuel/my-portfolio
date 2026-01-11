@@ -5,7 +5,7 @@ body {
     background: #f0f0f0;
     color: #333;
     padding-top: 80px; /* space for fixed nav */
-    background: url('images/bgimage.jpg') repeat;
+    background: url('bgimage.jpg') repeat;
     background-size: auto;
 }
 
@@ -826,4 +826,5 @@ section {
     .typewriter { font-size: 1.6rem !important; }
     .nav { padding: 12px 15px; }
 }
+
 
